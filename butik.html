@@ -10,8 +10,30 @@
 <body>
 
 <nav>
-  <a href="index.html">Hem</a>
-  <a href="butik.html">Priser & Butik</a>
+<div><strong>Indoor Distance</strong></div>
+
+<div id="navLinks">
+
+<a href="index.html">Hem</a>
+<a href="tjanster.html">Tjänster</a>
+<a href="om.html">Om oss</a>
+<a href="butik.html">Priser & Butik</a>
+<a href="kontakt.html">Kontakta</a>
+
+<!-- Syns när man INTE är inloggad -->
+<a href="login.html" id="loginLink">Logga in</a>
+<a href="register.html" id="registerLink">Registrera</a>
+
+<!-- Syns när man ÄR inloggad -->
+<div id="userMenu" style="display:none; position:relative;">
+  <span id="userName" style="cursor:pointer;">👤 Konto ▾</span>
+  <div id="dropdownMenu" style="display:none; position:absolute; right:0; background:white; padding:10px; border:1px solid #ccc;">
+    <a href="konto.html">Mitt konto</a><br>
+    <a href="#" id="logoutLink">Logga ut</a>
+  </div>
+</div>
+
+</div>
 </nav>
 
 <div class="container">
