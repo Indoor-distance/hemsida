@@ -198,5 +198,18 @@ function setupLogout() {
     window.location.href = "index.html";
   });
 }
+//Betalning
+const premiumStatus = document.getElementById("premiumStatus");
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    if (userEmail) userEmail.textContent = user.email;
+    if (userUID) userUID.textContent = user.uid;
+
+    if (premiumStatus) {
+      premiumStatus.textContent = "Gratis"; // ändras senare
+    }
+  }
+});
 
 
