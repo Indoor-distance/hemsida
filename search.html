@@ -7,29 +7,54 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: #0D47A1;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #0D1B2A, #1B263B);
   color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.2);
+}
+
+.navbar a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* SÖK */
+.search-box input {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+/* CONTENT */
+.container {
+  max-width: 800px;
+  margin: 60px auto;
   text-align: center;
 }
 
 h1 {
-  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
-#results {
-  max-width: 600px;
-  margin: 30px auto;
-}
-
+/* RESULTAT */
 .result-card {
-  background: white;
-  color: black;
+  background: rgba(255,255,255,0.05);
   padding: 20px;
   margin: 15px;
-  border-radius: 12px;
+  border-radius: 15px;
   text-align: left;
   transition: 0.2s;
+  backdrop-filter: blur(10px);
 }
 
 .result-card:hover {
@@ -37,15 +62,14 @@ h1 {
 }
 
 .result-card a {
-  text-decoration: none;
+  color: #4dabf7;
   font-size: 18px;
   font-weight: bold;
-  color: #0D47A1;
+  text-decoration: none;
 }
 
 .result-card p {
-  margin: 5px 0 0;
-  color: gray;
+  color: #ccc;
 }
 </style>
 
@@ -53,9 +77,26 @@ h1 {
 
 <body>
 
-<h1>Sökresultat</h1>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div><strong>Indoor Distance</strong></div>
 
-<div id="results"></div>
+  <div>
+    <a href="index.html">Hem</a>
+    <a href="priser.html">Priser</a>
+    <a href="konto.html">Konto</a>
+  </div>
+
+  <form action="search.html" method="GET" class="search-box">
+    <input type="text" name="q" placeholder="Sök..." required>
+  </form>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <h1>Sökresultat</h1>
+  <div id="results"></div>
+</div>
 
 <script>
 const pages = [
@@ -66,22 +107,22 @@ const pages = [
     keywords: "start indoor distance hem"
   },
   {
-    name: "Priser",
+    name: "Priser & Butik",
     url: "priser.html",
-    desc: "Se våra abonnemang och priser",
-    keywords: "pris premium kostnad"
+    desc: "Se priser och produkter",
+    keywords: "pris butik tröja mugg premium"
   },
   {
-    name: "Kontakt",
+    name: "Kontakta oss",
     url: "kontakt.html",
-    desc: "Kontakta oss för frågor",
-    keywords: "kontakt mail hjälp"
+    desc: "Kontakta oss för hjälp",
+    keywords: "kontakt mail hjälp support"
   },
   {
-    name: "Konto",
+    name: "Mitt konto",
     url: "konto.html",
     desc: "Hantera ditt konto",
-    keywords: "konto login profil"
+    keywords: "konto login profil användare"
   }
 ];
 
