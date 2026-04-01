@@ -305,29 +305,40 @@ button:disabled {
 }
 
 #searchInput {
-  padding: 8px 15px;
+  padding: 6px 12px;
   border-radius: 20px;
   border: none;
   outline: none;
-  width: 180px;
+  width: 140px; /* smal ruta */
+  background: rgba(255,255,255,0.1);
+  color: white;
 }
 
+/* DROPDOWN */
 #suggestions {
   position: absolute;
-  top: 40px;
-  width: 100%;
-  background: white;
-  color: black;
+  top: 35px;
+  left: 0;
+  width: 200px;
+  background: #1B263B;
   border-radius: 10px;
   overflow: hidden;
-  z-index: 1000;
+  display: none;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
+/* VARJE RESULTAT */
 .suggestion-item {
   padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   cursor: pointer;
+  color: white;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
 }
 
 .suggestion-item:hover {
-  background: #eee;
+  background: #0D47A1;
 }
