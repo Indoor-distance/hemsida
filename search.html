@@ -1,9 +1,56 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <title>Sök - Indoor Distance</title>
+<meta charset="UTF-8">
+<title>Sök - Indoor Distance</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0D47A1;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 40px;
+}
+
+#results {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.result-card {
+  background: white;
+  color: black;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 12px;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.result-card:hover {
+  transform: scale(1.02);
+}
+
+.result-card a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0D47A1;
+}
+
+.result-card p {
+  margin: 5px 0 0;
+  color: gray;
+}
+</style>
+
 </head>
+
 <body>
 
 <h1>Sökresultat</h1>
@@ -12,31 +59,61 @@
 
 <script>
 const pages = [
-  { name: "Hem", url: "index.html", keywords: "start indoor distance" },
-  { name: "Priser", url: "butik.html", keywords: "pris premium kostnad" },
-  { name: "Kontakt", url: "kontakt.html", keywords: "kontakt mail hjälp" },
-  { name: "Konto", url: "konto.html", keywords: "konto login profil" }
+  {
+    name: "Hem",
+    url: "index.html",
+    desc: "Tillbaka till startsidan",
+    keywords: "start indoor distance hem"
+  },
+  {
+    name: "Priser",
+    url: "priser.html",
+    desc: "Se våra abonnemang och priser",
+    keywords: "pris premium kostnad"
+  },
+  {
+    name: "Kontakt",
+    url: "kontakt.html",
+    desc: "Kontakta oss för frågor",
+    keywords: "kontakt mail hjälp"
+  },
+  {
+    name: "Konto",
+    url: "konto.html",
+    desc: "Hantera ditt konto",
+    keywords: "konto login profil"
+  }
 ];
 
 const params = new URLSearchParams(window.location.search);
-const query = params.get("q").toLowerCase();
+const query = params.get("q")?.toLowerCase() || "";
 
 const resultsDiv = document.getElementById("results");
 
-pages.forEach(page => {
-  if (page.name.toLowerCase().includes(query) || page.keywords.includes(query)) {
+let found = false;
 
-    const link = document.createElement("a");
-    link.href = page.url;
-    link.textContent = page.name;
+pages.forEach(page => {
+  if (
+    page.name.toLowerCase().includes(query) ||
+    page.keywords.includes(query)
+  ) {
+    found = true;
 
     const div = document.createElement("div");
-    div.style.margin = "10px";
-    div.appendChild(link);
+    div.className = "result-card";
+
+    div.innerHTML = `
+      <a href="${page.url}">${page.name}</a>
+      <p>${page.desc}</p>
+    `;
 
     resultsDiv.appendChild(div);
   }
 });
+
+if (!found) {
+  resultsDiv.innerHTML = "<p>Inga resultat hittades 😢</p>";
+}
 </script>
 
 </body>
