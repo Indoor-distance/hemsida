@@ -19,9 +19,16 @@
 <a href="om.html">Om oss</a>
 <a href="butik.html">Priser & Butik</a>
 <a href="kontakt.html">Kontakta</a>
-<form action="search.html" method="GET" class="search-form">
-  <input type="text" name="q" placeholder="Sök..." required>
-</form>
+<div class="search-box">
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Sök..." 
+    onkeyup="showSuggestions()"
+    autocomplete="off"
+  >
+  <div id="suggestions"></div>
+</div>
 
 <!-- Syns när man INTE är inloggad -->
 <a href="login.html" id="loginLink">Logga in</a>
