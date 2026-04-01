@@ -92,7 +92,7 @@ Indoor Distance © 2026
 <script>
 const pages = [
   { name: "Hem", url: "index.html" },
-  { name: "Priser & Butik", url: "priser.html" },
+  { name: "Priser & Butik", url: "butik.html" },
   { name: "Kontakta oss", url: "kontakt.html" },
   { name: "Mitt konto", url: "konto.html" }
 ];
@@ -103,10 +103,17 @@ function showSuggestions() {
 
   suggestions.innerHTML = "";
 
-  if (input === "") return;
+  if (input === "") {
+    suggestions.style.display = "none";
+    return;
+  }
+
+  let found = false;
 
   pages.forEach(page => {
     if (page.name.toLowerCase().includes(input)) {
+      found = true;
+
       const div = document.createElement("div");
       div.className = "suggestion-item";
       div.textContent = page.name;
@@ -118,6 +125,8 @@ function showSuggestions() {
       suggestions.appendChild(div);
     }
   });
+
+  suggestions.style.display = found ? "block" : "none";
 }
 </script>
 </body>
