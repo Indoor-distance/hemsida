@@ -114,6 +114,46 @@ Indoor Distance © 2026
 </div>
 
 <script type="module" src="firebase.js"></script>
+<script>
+const pages = [
+  { name: "Hem", url: "index.html" },
+  { name: "Priser & Butik", url: "butik.html" },
+  { name: "Kontakta oss", url: "kontakt.html" },
+  { name: "Mitt konto", url: "konto.html" }
+];
+
+function showSuggestions() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const suggestions = document.getElementById("suggestions");
+
+  suggestions.innerHTML = "";
+
+  if (input === "") {
+    suggestions.style.display = "none";
+    return;
+  }
+
+  let found = false;
+
+  pages.forEach(page => {
+    if (page.name.toLowerCase().includes(input)) {
+      found = true;
+
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.textContent = page.name;
+
+      div.onclick = () => {
+        window.location.href = page.url;
+      };
+
+      suggestions.appendChild(div);
+    }
+  });
+
+  suggestions.style.display = found ? "block" : "none";
+}
+</script>
 </body>
 </html>
 
