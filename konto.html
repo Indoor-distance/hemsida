@@ -1,64 +1,103 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mitt konto | Indoor Distance</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Mitt konto - Indoor Distance</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0D47A1;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 80px auto;
+      background: white;
+      color: black;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .info {
+      margin: 15px 0;
+      font-size: 16px;
+    }
+
+    .status {
+      font-weight: bold;
+      color: green;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background: #0D47A1;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #08306b;
+    }
+
+    .logout {
+      background: red;
+    }
+
+    .logout:hover {
+      background: darkred;
+    }
+
+    .upgrade {
+      background: orange;
+    }
+
+    .upgrade:hover {
+      background: darkorange;
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-<div><strong>Indoor Distance</strong></div>
+  <h1>Indoor Distance</h1>
 
-<div id="navLinks">
+  <div class="container">
 
-<a href="index.html">Hem</a>
-<a href="tjanster.html">Tjänster</a>
-<a href="om.html">Om oss</a>
-<a href="butik.html">Priser & Butik</a>
-<a href="kontakt.html">Kontakta</a>
+    <h2>Mitt konto</h2>
 
-<!-- Syns när man INTE är inloggad -->
-<a href="login.html" id="loginLink">Logga in</a>
-<a href="register.html" id="registerLink">Registrera</a>
+    <div class="info">
+      Email: <span id="userEmail">-</span>
+    </div>
 
-<!-- Syns när man ÄR inloggad -->
-<div id="userMenu" style="display:none; position:relative;">
-  <span id="userName" style="cursor:pointer;">👤 Konto ▾</span>
-  <div id="dropdownMenu" style="display:none; position:absolute; right:0; background:white; padding:10px; border:1px solid #ccc;">
-    <a href="konto.html">Mitt konto</a><br>
-    <a href="#" id="logoutLink">Logga ut</a>
+    <div class="info">
+      ID: <span id="userUID">-</span>
+    </div>
+
+    <div class="info">
+      Status: <span id="premiumStatus" class="status">Gratis</span>
+    </div>
+
+    <button class="upgrade">Uppgradera till Premium</button>
+
+    <br>
+
+    <button id="logoutLink" class="logout">Logga ut</button>
+
   </div>
-</div>
 
-</div>
-</nav>
+  <script type="module" src="firebase.js"></script>
 
-
-<div class="container">
-<h1>Mitt konto</h1>
-
-<div class="card">
-<p><strong>Email:</strong> <span id="userEmail"></span></p>
-<p><strong>Status:</strong> <span id="verifyStatus"></span></p>
-<button id="verifyBtn" style="display:none;">Skicka verifieringsmail</button>
-<p><strong>UID:</strong> <span id="userUID"></span></p>
-<h3>Återställ lösenord</h3>
-<button id="resetPasswordBtn">Skicka återställningsmail</button>
-<p>Status: <span id="premiumStatus">Gratis</span></p>
-<button id="logoutBtn">Logga ut</button>
-</div>
-
-</div>
-
-<div class="footer">
-Indoor Distance © 2026
-</div>
-
-<script type="module" src="firebase.js"></script>
 </body>
 </html>
-
-
-
