@@ -78,19 +78,43 @@ h1 {
 <body>
 
 <!-- NAVBAR -->
-<div class="navbar">
-  <div><strong>Indoor Distance</strong></div>
+<nav>
+<div><strong>Indoor Distance</strong></div>
 
-  <div>
-    <a href="index.html">Hem</a>
-    <a href="butik.html">Priser</a>
-    <a href="konto.html">Konto</a>
-  </div>
+<div id="navLinks">
 
-  <form action="search.html" method="GET" class="search-box">
-    <input type="text" name="q" placeholder="Sök..." required>
-  </form>
+<a href="index.html">Hem</a>
+<a href="tjanster.html">Tjänster</a>
+<a href="om.html">Om oss</a>
+<a href="butik.html">Priser & Butik</a>
+<a href="kontakt.html">Kontakta</a>
+<div class="search-box">
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Sök..." 
+    onkeyup="showSuggestions()"
+    autocomplete="off"
+  >
+  <div id="suggestions"></div>
 </div>
+
+<!-- Syns när man INTE är inloggad -->
+<a href="login.html" id="loginLink">Logga in</a>
+<a href="register.html" id="registerLink">Registrera</a>
+
+<!-- Syns när man ÄR inloggad -->
+<div id="userMenu" style="display:none; position:relative;">
+  <span id="userName" style="cursor:pointer;">👤 Konto ▾</span>
+  <div id="dropdownMenu" style="display:none; position:absolute; right:0; background:white; padding:10px; border:1px solid #ccc;">
+    <a href="konto.html">Mitt konto</a><br>
+    <a href="#" id="logoutLink">Logga ut</a>
+  </div>
+</div>
+
+</div>
+</nav>
+
 
 <!-- CONTENT -->
 <div class="container">
