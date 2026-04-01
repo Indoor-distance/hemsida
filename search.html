@@ -153,9 +153,34 @@ pages.forEach(page => {
 });
 
 if (!found) {
-  resultsDiv.innerHTML = "<p>Inga resultat hittades 😢</p>";
-}
-</script>
+  const aiAnswer = aiSearch(query);
 
+  resultsDiv.innerHTML = `
+    <div class="result-card">
+      <h3>🤖 AI svar</h3>
+      <p>${aiAnswer}</p>
+    </div>
+  `;
+}
+
+function aiSearch(query) {
+  query = query.toLowerCase();
+
+  if (query.includes("pris")) {
+    return "Du kan hitta våra priser under 'Priser & Butik'.";
+  }
+
+  if (query.includes("konto")) {
+    return "Du kan hantera ditt konto på kontosidan.";
+  }
+
+  if (query.includes("kontakt")) {
+    return "Kontakta oss via kontaktsidan.";
+  }
+
+  return "Tyvärr hittade vi inget exakt, men testa att söka på något annat.";
+}
+
+</script>
 </body>
 </html>
