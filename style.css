@@ -299,3 +299,35 @@ button:disabled {
 .search-form input:focus {
   width: 220px;
 }
+
+.search-box {
+  position: relative;
+}
+
+#searchInput {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 180px;
+}
+
+#suggestions {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #eee;
+}
