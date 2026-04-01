@@ -212,4 +212,13 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-
+<script>
+function handleSearch(event) {
+  if (event.key === "Enter") {
+    const value = document.getElementById("searchInput").value;
+    window.location.href = "search.html?q=" + encodeURIComponent(value);
+  } else {
+    showSuggestions();
+  }
+}
+</script>
