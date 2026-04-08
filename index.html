@@ -99,7 +99,31 @@ längd med endast ett knapptryck.
 Indoor Distance © 2026
 </div>
 
-<script type="module" src="firebase.js"></script>
+<script type="module" src="firebase.js"></script><script>
+function toggleLanguageMenu() {
+  const menu = document.getElementById("languageMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function setLanguage(lang) {
+  localStorage.setItem("language", lang);
+  applyLanguage();
+  updateFlag();
+  document.getElementById("languageMenu").style.display = "none";
+}
+
+function getLanguage() {
+  return localStorage.getItem("language") || "sv";
+}
+
+function updateFlag() {
+  const lang = getLanguage();
+  const flag = document.getElementById("currentFlag");
+
+  flag.innerText = lang === "sv" ? "🇸🇪" : "🇬🇧";
+}
+</script>
+
 <script>
 const pages = [
   { name: "Hem", url: "index.html" },
