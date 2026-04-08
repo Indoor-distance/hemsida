@@ -1,0 +1,54 @@
+<h1 id="productName"></h1>
+
+<!-- Kategori -->
+<label>Typ:</label>
+<select id="type">
+  <option>Dam</option>
+  <option>Herr</option>
+  <option>Ungdom</option>
+  <option>Barn</option>
+</select>
+
+<br><br>
+
+<!-- Storlek -->
+<label>Storlek:</label>
+<select id="size">
+  <option>S</option>
+  <option>M</option>
+  <option>L</option>
+</select>
+
+<br><br>
+
+<!-- Antal -->
+<label>Antal:</label>
+<input type="number" id="quantity" value="1" min="1">
+
+<br><br>
+
+<button onclick="addToCart()">Lägg i varukorg</button>
+
+<script>
+function addToCart() {
+  const type = document.getElementById("type").value;
+  const size = document.getElementById("size").value;
+  const quantity = document.getElementById("quantity").value;
+
+  const item = {
+    name: "T-shirt",
+    type,
+    size,
+    quantity,
+    price: 299
+  };
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push(item);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  window.location.href = "cart.html";
+}
+</script>
