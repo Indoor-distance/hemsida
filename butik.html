@@ -109,10 +109,7 @@
 
 <h1>Butik</h1>
 
-<div class="card">
-  <h3>T-shirt</h3>
-  <p>800 kr</p>
-</div>
+<div class="product" onclick="goToProduct('tshirt')">
 
 <div class="card">
   <h3>Mugg</h3>
@@ -179,6 +176,11 @@ function showSuggestions() {
   });
 
   suggestions.style.display = found ? "block" : "none";
+}
+</script>
+<script>
+function goToProduct(id) {
+  window.location.href = "product.html?id=" + id;
 }
 </script>
 </body>
