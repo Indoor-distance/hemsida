@@ -124,6 +124,12 @@ function updateFlag() {
 }
 updateFlag();
 applyLanguage();
+document.addEventListener("click", function(e) {
+  const dropdown = document.querySelector(".language-dropdown");
+  if (!dropdown.contains(e.target)) {
+    document.getElementById("languageMenu").style.display = "none";
+  }
+});
 </script>
 <script>
 const pages = [
