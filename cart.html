@@ -3,3 +3,37 @@
 <div id="cartItems"></div>
 
 <button onclick="goToCheckout()">Gå till kassa</button>
+
+<script>
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+let total = 0;
+
+const container = document.getElementById("cartItems");
+
+cart.forEach((item, index) => {
+  total += item.price * item.quantity;
+
+  container.innerHTML += `
+    <div>
+      <p>${item.name}</p>
+      <p>${item.type} | ${item.size}</p>
+      <p>Antal: ${item.quantity}</p>
+      <p>${item.price * item.quantity} kr</p>
+      <button onclick="removeItem(${index})">Ta bort</button>
+    </div>
+    <hr>
+  `;
+});
+
+container.innerHTML += `<h3>Total: ${total} kr</h3>`;
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
+}
+
+function goToCheckout() {
+  window.location.href = "checkout.html";
+}
+</script>
