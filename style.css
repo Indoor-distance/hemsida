@@ -342,3 +342,37 @@ button:disabled {
 .suggestion-item:hover {
   background: #0D47A1;
 }
+
+.language-dropdown {
+  position: relative;
+}
+
+.selected-language {
+  cursor: pointer;
+  font-size: 22px;
+  background: rgba(255,255,255,0.1);
+  padding: 6px 10px;
+  border-radius: 50%;
+}
+
+.language-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #1B263B;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 140px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.language-menu div {
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.language-menu div:hover {
+  background: #0D47A1;
+}
