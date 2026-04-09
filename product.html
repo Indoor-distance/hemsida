@@ -1,5 +1,81 @@
 <div class="product-page">
 
+<script>
+let selectedSize = null;
+let product = null;
+
+// Hämta ID från URL
+const params = new URLSearchParams(window.location.search);
+const productId = parseInt(params.get("id"));
+
+// Ladda produkt
+fetch("products.json")
+  .then(res => res.json())
+  .then(data => {
+    product = data.find(p => p.id === productId);
+    loadProduct();
+  });
+
+function loadProduct() {
+  document.getElementById("title").innerText = product.name;
+  document.getElementById("description").innerText = product.description;
+  document.getElementById("price").innerText = product.price + " kr";
+  document.getElementById("stock").innerText = product.stock ? "✔ I lager" : "❌ Slut";
+
+  // Bilder
+  document.getElementById("mainImage").src = product.images[0];
+
+  const thumbs = document.getElementById("thumbnails");
+  product.images.forEach(img => {
+    const el = document.createElement("img");
+    el.src = img;
+    el.onclick = () => document.getElementById("mainImage").src = img;
+    thumbs.appendChild(el);
+  });
+
+  // Storlekar
+  if (product.sizes) {
+    const sizeDiv = document.getElementById("sizes");
+    product.sizes.forEach(size => {
+      const btn = document.createElement("button");
+      btn.innerText = size;
+
+      btn.onclick = () => {
+        selectedSize = size;
+        document.querySelectorAll("#sizes button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      };
+
+      sizeDiv.appendChild(btn);
+    });
+  }
+}
+
+function addToCart() {
+  const quantity = document.getElementById("quantity").value;
+
+  if (product.sizes && !selectedSize) {
+    alert("Välj storlek först!");
+    return;
+  }
+
+  const item = {
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    quantity: quantity,
+    size: selectedSize
+  };
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(item);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert("Tillagd i varukorgen!");
+}
+</script>
+  
   <div class="gallery">
     <img id="mainImage">
     <div id="thumbnails"></div>
