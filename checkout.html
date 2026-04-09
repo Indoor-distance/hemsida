@@ -16,8 +16,13 @@
 
 <script>
 function completeOrder() {
+  const orderNumber = generateOrderNumber();
+
+  localStorage.setItem("orderNumber", orderNumber);
+
   localStorage.removeItem("cart");
-  window.location.href = "thankyou2.html";
+
+  window.location.href = "thankyou.html";
 }
 </script>
 <script>
