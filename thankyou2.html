@@ -8,13 +8,18 @@
 <body>
 
 <h1>Tack för din beställning! 🎉</h1>
+
+<p>Ditt ordernummer:</p>
+<h2 id="orderNumber"></h2>
+
 <p>Du kommer få en bekräftelse via mail.</p>
+
+<script>
+document.getElementById("orderNumber").innerText =
+  localStorage.getItem("orderNumber");
+</script>
 
 <form action="https://formspree.io/f/mjgpdoyk" method="POST">
   <input type="hidden" name="order" id="orderData">
   <button type="submit">Bekräfta köp</button>
 </form>
-
-<script>
-document.getElementById("orderData").value = localStorage.getItem("cart");
-</script>
