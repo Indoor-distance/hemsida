@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "name": "Mugg",
+    "price": 200,
+    "description": "En stilren mugg för vardagen.",
+    "images": ["images/mugg1.jpg", "images/mugg2.jpg"],
+    "stock": true
+  },
+  {
+    "id": 2,
+    "name": "Tröja",
+    "price": 399,
+    "description": "Premium hoodie",
+    "sizes": ["S", "M", "L", "XL"],
+    "images": ["images/shirt1.jpg", "images/shirt2.jpg"],
+    "stock": true
+  }
+]
